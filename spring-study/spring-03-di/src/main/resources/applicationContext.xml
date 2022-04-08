@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+   <bean id="address1" class="com.doromv.pojo.Address">
+       <property name="address" value="泉州"/>
+   </bean>
+    <bean id="student" class="com.doromv.pojo.Student">
+        <property name="name" value="Doromv"/>
+        <property name="address" ref="address1"/>
+        <property name="books">
+            <array>
+             <value>西游记</value>
+                <value>红楼梦</value>
+                <value>水浒传</value>
+                <value>三国演义</value>
+            </array>
+        </property>
+        <property name="hobbies">
+            <list>
+                <value>听歌</value>
+                <value>敲代码</value>
+                <value>玩游戏</value>
+            </list>
+        </property>
+        <property name="card">
+            <map>
+                <entry key="身份证" value="12313414141414"/>
+                <entry key="银行卡" value="12313123123123"/>
+            </map>
+        </property>
+        <property name="games">
+            <set>
+                <value>LOL</value>
+                <value>APEX</value>
+                <value>PUBG</value>
+            </set>
+        </property>
+        <property name="wife">
+            <null/>
+        </property>
+        <property name="info">
+            <props>
+                <prop key="学号">193111040</prop>
+                <prop key="性别">男</prop>
+                <prop key="姓名">Doromv</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

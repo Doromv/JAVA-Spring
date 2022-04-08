@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--
+    id 等价于 变量名
+    class 等价于要new的对象
+    property 等价于对象中的一个属性 value给该属性赋值 ref引用Spring容器中创建好的对象
+    -->
+    <bean id="mysqlImpl"  class="com.doromv.dao.UserDaoMysqlimpl"/>
+    <bean id="oracleImpl" class="com.doromv.dao.UserDaoOracleimpl"/>
+    <bean id="userImpl" class="com.doromv.dao.UserDaoimpl"/>
+    <bean id="serverImpl" class="com.doromv.dao.UserDaoSqlserverimpl"/>
+    <bean id="userService" class="com.doromv.service.UserServiceImpl">
+        <property name="userDao" ref="oracleImpl"/>
+    </bean>
+
+</beans>

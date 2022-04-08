@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+    <bean id="userService" class="com.doromv.service.UserServiceImpl"/>
+    <bean id="afterLog" class="com.doromv.log.AfterLog"/>
+    <bean id="beforeLog" class="com.doromv.log.BeforeLog"/>
+<!--    配置aop-->
+
+<!--        方式一：-->
+<!--
+切入点：pointcut
+表达式：expression
+要执行的位置：execution([修饰词] 返回值 类名 方法名 参数)   ps:(..)代任意数量参数
+-->
+
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="pointcut" expression="execution(* com.doromv.service.UserServiceImpl.*(..))"/>-->
+<!--        <aop:advisor advice-ref="beforeLog" pointcut-ref="pointcut"/>-->
+<!--        <aop:advisor advice-ref="afterLog" pointcut-ref="pointcut"/>-->
+<!--    </aop:config>-->
+
+
+<!--    方式二：-->
+<!--    <bean id="diy" class="com.doromv.diy.DiyPointCut"/>-->
+<!--    <aop:config>-->
+<!--        <aop:aspect ref="diy">-->
+<!--            <aop:pointcut id="point" expression="execution(* com.doromv.service.UserServiceImpl.*(..))"/>-->
+<!--            <aop:after method="after" pointcut-ref="point"/>-->
+<!--            <aop:before method="before" pointcut-ref="point"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+
+
+<!--    方式三-->
+    <bean id="annotationPointCut" class="com.doromv.diy.AnnotationPointCut"/>
+<!--    开启注解支持-->
+    <aop:aspectj-autoproxy/>
+</beans>
